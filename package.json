@@ -2,7 +2,7 @@
   "name": "@chundev/gransition",
   "version": "1.0.0",
   "description": "Page transition context with GSAP timeline.",
-  "main": "./dist/cjs/index.js",
+  "main": "./dist/esm/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
   "scripts": {
@@ -15,8 +15,8 @@
   },
   "author": "latteouka",
   "license": "ISC",
-  "peerDependencies": {
-    "react": ">=18"
+  "dependencies": {
+    "react": ">=18",
     "gsap": ">=3"
   },
   "devDependencies": {
