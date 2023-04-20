@@ -1,9 +1,11 @@
 {
   "name": "@chundev/gtranz",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "type": "module",
   "description": "Page transition context with GSAP timeline.",
   "types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
       "require": "./dist/index.js",
