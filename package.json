@@ -1,6 +1,6 @@
 {
   "name": "@chundev/gtranz",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "type": "module",
   "description": "Page transition context with GSAP timeline.",
   "types": "./dist/index.d.ts",
