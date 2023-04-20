@@ -1,11 +1,40 @@
 {
   "name": "@chundev/gtranz",
-  "version": "1.0.19",
-  "type": "module",
   "description": "Page transition context with GSAP timeline.",
-  "types": "./dist/index.d.ts",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "version": "1.0.20",
+  "author": "latteouka",
+  "license": "ISC",
+  "keywords": [
+    "react",
+    "typescript",
+    "nextjs",
+    "transition"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/latteouka/gtranz"
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "treeshake": true,
+    "sourcemap": "inline",
+    "minify": true,
+    "clean": true,
+    "dts": true,
+    "splitting": false,
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "external": [
+      "react"
+    ]
+  },
   "exports": {
     ".": {
       "require": "./dist/index.js",
@@ -15,16 +44,8 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "build": "tsup"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/latteouka/gtranz"
-  },
-  "author": "latteouka",
-  "license": "ISC",
-  "dependencies": {
+  "types": "./dist/index.d.ts",
+  "peerDependencies": {
     "gsap": ">=3",
     "react": ">=18"
   },
@@ -39,11 +60,5 @@
     "ts-loader": "^9.4.2",
     "tsup": "^6.7.0",
     "typescript": "^5.0.4"
-  },
-  "keywords": [
-    "react",
-    "typescript",
-    "nextjs",
-    "transition"
-  ]
+  }
 }
