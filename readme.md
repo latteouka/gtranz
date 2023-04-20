@@ -14,7 +14,7 @@ If you can read Chinese, check [this](https://doc.chundev.com/blogs/transition-n
 
 - Wrap your content in `_app.tsx`
 
-```ts
+```tsx
 import Gtranz from "@chundev/gtranz";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -71,22 +71,24 @@ useIsomorphicLayoutEffect(() => {
 }, []);
 ```
 
-## Deal with overwrite
+## Dealing with overwrite
 
 If you are trying to setup animations like I did in the demo.  
-You might also realize that sometimes you have to overwrite gsap for instant animation(for the same element).  
+You might also realize that sometimes you have to overwrite gsap tweens for instant animation(for the same element).  
 And that messes up everything.  
-What you have to do is let gsap overwrite by default.
+What you can to do is let gsap overwrite by default.
 
 ```ts
+// put this somewhere
+// this effects globally
 gsap.defaults({ overwrite: true });
 ```
 
-And then you arrange all the setup cycle by yourself.
+And then you have to arrange all the setup cycle by yourself.
 
-You can:
+You might:
 
-1. use a state to determine the order of intro/outro setup.
+1. use a state to determine the setup order of intro/outro.
 
 ```ts
 const timeline = useTimeline();
@@ -128,7 +130,7 @@ useIsomorphicLayoutEffect(() => {
 }, [introPlayed]);
 ```
 
-2. use custom event to do whatever you want.
+2. use custom event to re-setup outro whenever you want.
 
 ```ts
 const timeline = useTimeline();
@@ -185,7 +187,7 @@ gsap.fromTo(
 );
 ```
 
-a custom event would look like this
+custom event function looks like:
 
 ```ts
 function dispatchSetupOutroEvent(eventName: string, data: any) {
@@ -196,4 +198,5 @@ function dispatchSetupOutroEvent(eventName: string, data: any) {
 dispatchSetupOutroEvent("setupAnimation");
 ```
 
-I don't really know if it's a good practice or not. But this did solve my problem and present nice transition effect.
+I don't really know if it's a good practice or not.  
+But I did solve my problem and make nice transition by doing this.
