@@ -1,36 +1,11 @@
 {
-  "include": ["**/*"],
-  "exclude": ["dist", "node_modules"],
   "compilerOptions": {
-    "baseUrl": ".",
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "skipDefaultLibCheck": true,
-    "noEmit": true,
-    "sourceMap": true,
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strictNullChecks": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noUnusedLocals": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": false,
-    "noImplicitThis": true,
-    "noImplicitAny": false,
-    "importHelpers": false,
-    "resolveJsonModule": true,
-    "isolatedModules": false,
-    "jsx": "react",
-    "paths": {
-      "custom-package-name": ["./src"],
-      "custom-package-name/*": ["./src/*"],
-      "@site/*": ["./docs/*"]
-    }
+    "noEmit": true
   }
 }
