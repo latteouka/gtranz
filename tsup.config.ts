@@ -13,13 +13,11 @@ export default defineConfig({
       js: extension,
     };
   },
-  target: "es6",
+  // target: "es6",
   format: ["cjs", "esm"],
-  shims: false,
   clean: true,
-  dts: "./src/index.ts",
-  sourcemap: false,
+  dts: true,
   splitting: false,
   minify: true,
-  esbuildPlugins: [babel()],
+  // esbuildPlugins: [babel()],
 });
