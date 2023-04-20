@@ -6,16 +6,14 @@
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist/**/*"
   ],
   "scripts": {
-    "build": "yarn build:esm",
-    "build:esm": "tsc"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/latteouka/gransition"
+    "url": "https://github.com/latteouka/gtranz"
   },
   "author": "latteouka",
   "license": "ISC",
