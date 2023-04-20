@@ -1,1 +1,0 @@
-{"version":3,"file":"useIsomorphicLayoutEffect.js","sourceRoot":"","sources":["../../src/useIsomorphicLayoutEffect.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,eAAe,EAAE,MAAM,OAAO,CAAC;AAEnD,IAAM,SAAS,GAAG,OAAO,MAAM,KAAK,WAAW,CAAC;AAEhD,IAAM,yBAAyB,GAAG,SAAS,CAAC,CAAC,CAAC,eAAe,CAAC,CAAC,CAAC,SAAS,CAAC;AAE1E,eAAe,yBAAyB,CAAC"}
