@@ -1,8 +1,14 @@
 ## Gtranz
 
+[DEMO](https://transition.chundev.com/)
+
 This is a simple context to let you make intro/outro animations with GSAP in Next.js.
 
 Original idea is from [johnpolacek/TweenPages](https://tweenpages.vercel.app/docs)
+
+You can read how this work in his article.
+
+If you can read Chinese, check [this](https://doc.chundev.com/blogs/transition-next) and learn what I've edited.
 
 ## Usage
 
@@ -11,14 +17,18 @@ Original idea is from [johnpolacek/TweenPages](https://tweenpages.vercel.app/doc
 ```ts
 import Gtranz from "@chundev/gtranz";
 
-<Gtranz>
-  <main className={font.className}>
-    <Head>
-      <title>Next.js Transition</title>
-    </Head>
-    <Component {...pageProps} />
-  </main>
-</Gtranz>;
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <Gtranz>
+      <main className={font.className}>
+        <Head>
+          <title>Next.js Transition</title>
+        </Head>
+        <Component {...pageProps} />
+      </main>
+    </Gtranz>
+  );
+}
 ```
 
 - then setup your outro with timeline
@@ -60,3 +70,130 @@ useIsomorphicLayoutEffect(() => {
   };
 }, []);
 ```
+
+## Deal with overwrite
+
+If you are trying to setup animations like I did in the demo.  
+You might also realize that sometimes you have to overwrite gsap for instant animation(for the same element).  
+And that messes up everything.  
+What you have to do is let gsap overwrite by default.
+
+```ts
+gsap.defaults({ overwrite: true });
+```
+
+And then you arrange all the setup cycle by yourself.
+
+You can:
+
+1. use a state to determine the order of intro/outro setup.
+
+```ts
+const timeline = useTimeline();
+const [introPlayed, setIntroPlayed] = useState(false);
+// intro
+useIsomorphicLayoutEffect(() => {
+  const ctx = gsap.context(() => {
+    gsap.fromTo(
+      ".title",
+      { x: -100, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        onComplete: () => {
+          setIntroPlayed(true);
+        },
+      }
+    );
+  });
+
+  return () => {
+    ctx.revert();
+  };
+}, []);
+
+// out
+useIsomorphicLayoutEffect(() => {
+  if (!introPlayed) return;
+  timeline.add(
+    gsap.to(".title", {
+      opacity: 0,
+    }),
+    0
+  );
+
+  return () => {
+    timeline?.clear();
+  };
+}, [introPlayed]);
+```
+
+2. use custom event to do whatever you want.
+
+```ts
+const timeline = useTimeline();
+const [introPlayed, setIntroPlayed] = useState(false);
+
+// intro
+useIsomorphicLayoutEffect(() => {
+  // bind event
+  document.addEventListener("setupAnimation", setupOutro);
+
+  const ctx = gsap.context(() => {
+    gsap.fromTo(
+      ".title",
+      { x: -100, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        onComplete: () => {
+          // dispatch when intro end
+          dispatchSetupOutroEvent("setupAnimation");
+        },
+      }
+    );
+  });
+
+  return () => {
+    ctx.revert();
+  };
+}, []);
+
+// outro setup
+function setupOutro() {
+  timeline.add(
+    gsap.to(".title", {
+      opacity: 0,
+    }),
+    0
+  );
+}
+```
+
+```ts
+// dispatch when some animation(at anywhere) is over
+gsap.fromTo(
+  ".title",
+  { x: -100, opacity: 0 },
+  {
+    x: 0,
+    opacity: 1,
+    onComplete: () => {
+      dispatchSetupOutroEvent("setupAnimation");
+    },
+  }
+);
+```
+
+a custom event would look like this
+
+```ts
+function dispatchSetupOutroEvent(eventName: string, data: any) {
+  const e = new CustomEvent(eventName, { detail: data });
+  document.dispatchEvent(e);
+}
+
+dispatchSetupOutroEvent("setupAnimation");
+```
+
+I don't really know if it's a good practice or not. But this did solve my problem and present nice transition effect.
