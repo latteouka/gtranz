@@ -3,6 +3,7 @@ import React, {
   createContext,
   Dispatch,
   SetStateAction,
+  useContext,
 } from "react";
 import gsap from "gsap";
 
@@ -33,4 +34,13 @@ const TransitionProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export { TransitionContext, TransitionProvider };
+const useTimeline = () => {
+  const { timeline } = useContext(TransitionContext);
+
+  if (timeline === undefined || timeline === null) {
+    throw new Error("You should use context within Provider(Gransition)");
+  }
+  return timeline;
+};
+
+export { TransitionContext, TransitionProvider, useTimeline };

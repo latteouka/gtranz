@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { TransitionContext, TransitionProvider } from "./TransitionContext";
+import React from "react";
+import { TransitionProvider, useTimeline } from "./TransitionContext";
 import TransitionLayout from "./TransitionLayout";
 import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
 
@@ -10,16 +10,6 @@ const Gtranz = ({ children }: { children: React.ReactNode }) => {
       <TransitionLayout>{children}</TransitionLayout>
     </TransitionProvider>
   );
-};
-
-// timeline
-const useTimeline = () => {
-  const { timeline } = useContext(TransitionContext);
-
-  if (timeline === undefined || timeline === null) {
-    throw new Error("You should use context within Provider(Gransition)");
-  }
-  return timeline;
 };
 
 export { useTimeline, useIsomorphicLayoutEffect };
