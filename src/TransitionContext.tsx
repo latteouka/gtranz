@@ -17,7 +17,11 @@ const TransitionContext = createContext<TransitionContextProps>({
   setTimeline: null,
 });
 
-const TransitionProvider = ({ children }: { children: React.ReactNode }) => {
+export const TransitionProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [timeline, setTimeline] = useState(() =>
     gsap.timeline({ paused: true })
   );
@@ -34,7 +38,7 @@ const TransitionProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const useTimeline = () => {
+export const useTimeline = () => {
   const { timeline } = useContext(TransitionContext);
 
   if (timeline === undefined || timeline === null) {
@@ -42,5 +46,3 @@ const useTimeline = () => {
   }
   return timeline;
 };
-
-export { TransitionContext, TransitionProvider, useTimeline };

@@ -6,7 +6,7 @@ import babel from "esbuild-plugin-babel";
 
 export default defineConfig({
   name: "tsup",
-  entry: ["./src/index.tsx"],
+  entry: ["./src/index.ts"],
   outExtension({ format }) {
     const extension = format === "esm" ? ".mjs" : ".js";
     return {
@@ -17,7 +17,7 @@ export default defineConfig({
   format: ["cjs", "esm"],
   shims: false,
   clean: true,
-  dts: "./src/index.tsx",
+  dts: "./src/index.ts",
   sourcemap: false,
   splitting: false,
   minify: true,
