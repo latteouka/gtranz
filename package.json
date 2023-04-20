@@ -1,6 +1,6 @@
 {
   "name": "@chundev/gtranz",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Page transition context with GSAP timeline.",
   "main": "./dist/esm/index.js",
   "module": "./dist/esm/index.js",
