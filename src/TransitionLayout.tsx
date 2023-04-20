@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useTimeline } from "./Gransition";
+import { useTimeline } from "./Gtranz";
 import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
 
 export default function TransitionLayout({

@@ -1,6 +1,6 @@
 {
-  "name": "@chundev/gransition",
-  "version": "1.0.0",
+  "name": "@chundev/gtranz",
+  "version": "1.0.1",
   "description": "Page transition context with GSAP timeline.",
   "main": "./dist/esm/index.js",
   "module": "./dist/esm/index.js",
@@ -16,11 +16,11 @@
   "author": "latteouka",
   "license": "ISC",
   "dependencies": {
-    "react": ">=18",
-    "gsap": ">=3"
+    "gsap": ">=3",
+    "react": ">=18"
   },
   "devDependencies": {
-    "@types/react": ">=18",
+    "@types/react": "^18.0.37",
     "typescript": ">=5"
   },
   "keywords": [

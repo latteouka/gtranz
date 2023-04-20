@@ -1,4 +1,4 @@
-import { Gransition, useTimeline } from "./Gransition";
+import Gtranz, { useTimeline } from "./Gtranz";
 import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
 export { useTimeline, useIsomorphicLayoutEffect };
-export default Gransition;
+export default Gtranz;
