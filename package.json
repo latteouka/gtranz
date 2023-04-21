@@ -1,7 +1,7 @@
 {
   "name": "@chundev/gtranz",
   "description": "Page transition context with GSAP timeline.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "latteouka",
   "license": "MIT",
   "keywords": [

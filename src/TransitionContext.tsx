@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo } from "react";
+import React, { createContext, useContext, useState } from "react";
 import gsap from "gsap";
 
 interface TransitionContextProps {
@@ -16,7 +16,7 @@ export const TransitionProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const timeline = useMemo(() => gsap.timeline({ paused: true }), []);
+  const [timeline] = useState(gsap.timeline({ paused: true }));
 
   return (
     <TransitionContext.Provider

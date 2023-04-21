@@ -2,11 +2,11 @@
 
 [DEMO](https://transition.chundev.com/)
 
-This is a simple context to let you make intro/outro animations with GSAP in Next.js.
+This is a simple timeline context lets you make intro/outro animations with GSAP in Next.js.
 
 Original idea is from [johnpolacek/TweenPages](https://tweenpages.vercel.app/docs)
 
-You can read how this work in his article.
+You can read how it works in his article.
 
 If you can read Chinese, check [this](https://doc.chundev.com/blogs/transition-next) and learn what I've edited.
 
@@ -86,9 +86,10 @@ gsap.defaults({ overwrite: true });
 
 And then you have to arrange all the setup cycle by yourself.
 
-You might:
+You might need to:
 
 1. use a state to determine the setup order of intro/outro.
+(if you overwrite some element's tweens that are also used in outro)
 
 ```ts
 const timeline = useTimeline();
