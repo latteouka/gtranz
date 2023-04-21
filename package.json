@@ -1,7 +1,7 @@
 {
   "name": "@chundev/gtranz",
   "description": "Page transition context with GSAP timeline.",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "author": "latteouka",
   "license": "MIT",
   "keywords": [
@@ -15,10 +15,7 @@
     "url": "https://github.com/latteouka/gtranz"
   },
   "scripts": {
-    "build": "yarn build:esm && yarn build:cjs",
-    "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "tsup": "tsup",
+    "build": "tsup",
     "yalc": "yalc publish"
   },
   "main": "./dist/index.js",

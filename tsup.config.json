@@ -1,6 +1,6 @@
 {
   "splitting": true,
-  "sourcemap": true,
+  "sourcemap": false,
   "clean": true,
   "minify": true,
   "dts": true,
