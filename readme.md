@@ -201,3 +201,20 @@ dispatchSetupOutroEvent("setupAnimation");
 
 I don't really know if it's a good practice or not.  
 But I did solve my problem and make nice transition by doing this.
+
+## Events
+
+I also wrap these three functions for trigger events:
+
+```ts
+export function listenTo(event: string, callback: () => void) {
+  document.addEventListener(event, callback);
+}
+export function stopListenTo(event: string, callback: () => void) {
+  document.removeEventListener(event, callback);
+}
+export function triggerFor(event: string, data?: Object) {
+  const e = new CustomEvent(event, { detail: data ? data : {} });
+  document.dispatchEvent(e);
+}
+```
