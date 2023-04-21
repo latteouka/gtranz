@@ -5,10 +5,12 @@ interface TransitionContextProps {
   timeline: gsap.core.Timeline | null;
 }
 
+// create context api
 export const TransitionContext = createContext<TransitionContextProps>({
   timeline: null,
 });
 
+// create context provider
 export const TransitionProvider = ({
   children,
 }: {
@@ -27,6 +29,7 @@ export const TransitionProvider = ({
   );
 };
 
+// wrap useContext and check for null
 export const useTimeline = () => {
   const { timeline } = useContext(TransitionContext);
 
