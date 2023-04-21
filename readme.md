@@ -204,7 +204,7 @@ But I did solve my problem and make nice transition by doing this.
 
 ## Events
 
-I also wrap these three functions for trigger events:
+I also wrap these three functions for listening and triggering events:
 
 ```ts
 export function listenTo(event: string, callback: () => void) {
