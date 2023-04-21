@@ -158,6 +158,7 @@ useIsomorphicLayoutEffect(() => {
   });
 
   return () => {
+    document.removeEventListener("setupAnimation", setupOutro);
     ctx.revert();
   };
 }, []);
