@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
-import { useTimeline } from "./Gtranz";
-import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
+import React, { useState, useRef } from 'react';
+import { useTimeline } from './Gtranz';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 export default function TransitionLayout({
   children,

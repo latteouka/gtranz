@@ -1,4 +1,4 @@
-import { Gtranz, useTimeline } from "./Gtranz";
-import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
+import { Gtranz, useTimeline } from './Gtranz';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 export { Gtranz, useTimeline, useIsomorphicLayoutEffect };
