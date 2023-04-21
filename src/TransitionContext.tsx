@@ -1,4 +1,4 @@
-import React, { createContext, useMemo } from "react";
+import React, { createContext, useContext, useMemo } from "react";
 import gsap from "gsap";
 
 interface TransitionContextProps {
@@ -25,4 +25,13 @@ export const TransitionProvider = ({
       {children}
     </TransitionContext.Provider>
   );
+};
+
+export const useTimeline = () => {
+  const { timeline } = useContext(TransitionContext);
+
+  if (timeline === undefined || timeline === null) {
+    throw new Error("You should use context within Provider(Gtranz)");
+  }
+  return timeline;
 };
