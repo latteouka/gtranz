@@ -9,7 +9,6 @@ export default function TransitionLayout({
 }) {
   const [displayChildren, setDisplayChildren] = useState(children);
   const timeline = useTimeline();
-  const el = useRef(null);
 
   useIsomorphicLayoutEffect(() => {
     if (children !== displayChildren) {
@@ -24,5 +23,5 @@ export default function TransitionLayout({
     }
   }, [children]);
 
-  return <div ref={el}>{displayChildren}</div>;
+  return <div>{displayChildren}</div>;
 }

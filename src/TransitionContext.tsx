@@ -31,7 +31,7 @@ export const useTimeline = () => {
   const { timeline } = useContext(TransitionContext);
 
   if (timeline === undefined || timeline === null) {
-    throw new Error("You should use context within Provider(Gtranz)");
+    throw new Error("Should use timeline within Provider(Gtranz)");
   }
   return timeline;
 };
