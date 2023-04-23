@@ -1,16 +1,25 @@
 ## Gtranz
 
+
 [DEMO](https://transition.chundev.com/)
 
-This is a simple timeline context lets you make intro/outro animations with GSAP in Next.js.
+This is a simple timeline context lets you setup intro/outro animations with
+GSAP in Next.js.
 
 Original idea is from [johnpolacek/TweenPages](https://tweenpages.vercel.app/docs)
 
-You can read how it works in his article.
+You can read how it works in his doc.
 
-If you can read Chinese, check [this](https://doc.chundev.com/blogs/transition-next) and learn what I've edited.
+If you can read Chinese, check [this](https://doc.chundev.com/blogs/transition-next)
+and learn what I've edited.
 
 ## Usage
+
+```bash
+npm install @chundev/gtranz
+
+yarn add @chundev/gtranz
+```
 
 - Wrap your content in `_app.tsx`
 
@@ -19,14 +28,14 @@ import Gtranz from "@chundev/gtranz";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Gtranz>
-      <main className={font.className}>
-        <Head>
+    <main className={font.className}>
+       <Head>
           <title>Next.js Transition</title>
-        </Head>
-        <Component {...pageProps} />
-      </main>
-    </Gtranz>
+       </Head>
+       <Gtranz>
+       <Component {...pageProps} />
+       </Gtranz>
+    </main>
   );
 }
 ```
@@ -39,6 +48,7 @@ import { timeline, useIsomorphicLayoutEffect } from "@chundev/gtranz";
 const timeline = useTimeline();
 
 // intro
+// will play when enter the page
 useIsomorphicLayoutEffect(() => {
   const ctx = gsap.context(() => {
     gsap.fromTo(
@@ -74,19 +84,21 @@ useIsomorphicLayoutEffect(() => {
 ## Dealing with overwrite
 
 If you are trying to setup animations like I did in the demo.  
-You might also realize that sometimes you have to overwrite gsap tweens for instant animation(for the same element).  
+You might also realize that sometimes you have to overwrite gsap
+tweens for some instant animations(for the same element).  
+In the demo, I tween the positions of the images which are also set in the outro.
 And that messes up everything.  
 What you can to do is let gsap overwrite by default.
 
 ```ts
-// put this somewhere
+// put this somewhere high and do it once
 // this effects globally
 gsap.defaults({ overwrite: true });
 ```
 
-And then you have to arrange all the setup cycle by yourself.
+And then you arrange all the setup cycle by yourself.
 
-You might need to:
+You might:
 
 1. use a state to determine the setup order of intro/outro.
 (if you overwrite some element's tweens that are also used in outro)
@@ -175,7 +187,7 @@ function setupOutro() {
 ```
 
 ```ts
-// dispatch when some animation(at anywhere) is over
+// dispatch when other animation(at anywhere) is over
 gsap.fromTo(
   ".title",
   { x: -100, opacity: 0 },
@@ -200,8 +212,8 @@ function dispatchSetupOutroEvent(eventName: string, data: any) {
 dispatchSetupOutroEvent("setupAnimation");
 ```
 
-I don't really know if it's a good practice or not.  
-But I did solve my problem and make nice transition by doing this.
+I don't really know if it's good practice or not.  
+But I did solve my problem and make nice transition by doing so.
 
 ## Events
 
