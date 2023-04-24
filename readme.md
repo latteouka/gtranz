@@ -83,6 +83,10 @@ useIsomorphicLayoutEffect(() => {
 
 ## Dealing with overwrite
 
+EDIT: **ALTHOUGH IT CAN BE DONE THIS WAY, IT IS PROBABLY NOT A BEST SOLUTION.**  
+Check out the [discussion](https://greensock.com/forums/topic/29470-gsap-page-transitions-in-nextjs/).  
+You can still do transitions with default overwrite:false setting.
+
 If you are trying to setup animations like I did in the demo.  
 You might also realize that sometimes you have to overwrite gsap
 tweens for some instant animations(for the same element).  
@@ -215,19 +219,3 @@ dispatchSetupOutroEvent("setupAnimation");
 I don't really know if it's good practice or not.  
 But I did solve my problem and make nice transition by doing so.
 
-## Events
-
-I also wrap these three functions for listening and triggering events:
-
-```ts
-export function listenTo(event: string, callback: () => void) {
-  document.addEventListener(event, callback);
-}
-export function stopListenTo(event: string, callback: () => void) {
-  document.removeEventListener(event, callback);
-}
-export function triggerFor(event: string, data?: Object) {
-  const e = new CustomEvent(event, { detail: data ? data : {} });
-  document.dispatchEvent(e);
-}
-```
